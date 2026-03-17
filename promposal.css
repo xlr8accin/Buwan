@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffe4ec;
+    overflow-x: hidden;
+}
+
+/* layout */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* message */
+#messageTop {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #e75480;
+    font-weight: bold;
+}
+
+/* envelope */
+#envelopeContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+#envelopeImg {
+    width: 65vw;
+    max-width: 350px;
+    z-index: 10;
+}
+
+/* letter */
+#letterImg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0) scale(1);
+    width: 60vw;
+    max-width: 320px;
+    opacity: 0;
+    z-index: 20;
+    transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+#letterImg.showLetter {
+    top: -20%; /* slides up above envelope */
+    opacity: 1;
+}
+
+/* continue button */
+#continueBtn {
+    display: none;
+    padding: 10px 20px;
+    border: 2px solid #ff9bb3;
+    background: white;
+    color: #e75480;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* question */
+#question {
+    font-size: 2rem;
+    color: #e75480;
+    min-height: 60px;
+}
+
+/* buttons */
+.buttons {
+    display: none;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #ff9bb3;
+    background: white;
+    color: #e75480;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* No button dodge smooth */
+#noBtn {
+    transition: left 0.3s, top 0.3s;
+}
+
+/* vinyl */
+#vinyl {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 18vw;
+    max-width: 90px;
+    z-index: 5;
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* needle */
+#needle {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    width: 12vw;
+    max-width: 70px;
+}
+
+/* sparkles */
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fade 0.8s forwards;
+}
+
+@keyframes fade {
+    to {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* tulips */
+.tulip {
+    position: fixed;
+    top: -50px;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* mobile adjustments */
+@media (max-width: 600px) {
+    #question { font-size: 1.4rem; }
+    button { font-size: 0.9rem; padding: 8px 16px; }
+    .buttons { flex-direction: column; }
+}
+@media (max-height: 500px) {
+    .main { gap: 10px; }
+    #question { font-size: 1.2rem; }
+}
